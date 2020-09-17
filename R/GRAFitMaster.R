@@ -1,30 +1,33 @@
 #' GRAFit: Master code for connecting and calling other modules.
 #'
+#' @description This code is considered as the core code of the GRAFit that connects all other parts and calls modules where needed.
 #' @param wrk_dir Working directory, where the GRAFit outputs will be saved.
-#' @param data_dir The directory where the imaging data is stored.
+#' @param data_dir The directory where the imaging data (frames) is stored.
 #' @param PSF_dir The directory where pre-generated PSFs are stored. If this is not provided the PSF can be put into the wrk_dir. Alternatively, GRAFit will generate PSF for each galaxy.
 #' @param object_list List of CATAIDs that you wish to fit.
 #' @param threadMode specifies the thereading mode of the parallel mode of the GRAFit. 0: snow-like, suitable for laptops 1: using Rmpi, suitable for large clusters like supercomputers.
 #' @param ncores Number of CPUs to be used in parallel mode. Default = 1
-#' @param logfile A logical value. Should a log file be generated. Default = \code{TRUE}
+#' @param logfile Logical; Should a log file be generated. Default = \code{TRUE}
 #' @param nComp Number of components to be used in fitting. Default = 2 for a bulge+disk model. Alternatively could be 1 for a single Sersic model.
 #' @param optimMode The optimization mode. Default = 'MCMC'; using \code{LaplacesDemon} package. Alternatives for this argument is: 'LA' that uses \code{Laplace Approximation} and 'optim' that uses \code{optim} optimization.
 #' @param LA_iteration The iterations for \code{Laplace Approximation} optimization if optimMode = 'LA'. Default = 1000
 #' @param MCMC_iteration The iterations for \code{MCMC} optimization if optimMode = 'MCMC'. Default = 10000
-#' @param ExpDisk A logical value. Should the disk be fitted with a pure exponential profile (\code{Sersic index = 1}). Default = \code{FALSE}; for a free Sersic profile.
-#' @param FreeBulge A logical value. Should the bulge location (\code{x \& y}) also be fitted by GRAFit. Default = \code{FALSE}, i.e. the bulge position will be fixed to the disk position.
+#' @param ExpDisk Logical; Should the disk be fitted with a pure exponential profile (\code{Sersic index = 1}). Default = \code{FALSE}; for a free Sersic profile.
+#' @param FreeBulge Logical; Should the bulge location (\code{x \& y}) also be fitted by GRAFit. Default = \code{FALSE}, i.e. the bulge position will be fixed to the disk position.
 #' @param BulgeFreeness In unit pixels. How many pixels the bulge position is allowed to be free from the centre of disk. Default = 11.
 #' @param Single_PSF If \code{PSF_dir = FALSE} should the PSF be generated as a single PSF on the position of the galaxy on the CCD. Default = \code{FALSE}, generate a stacked PSF on the location of galaxy on each of the raw ACS images.
 #' @param PSF_diameter the diameter of the PSF in arcseconds. Default = 1"
 #' @param like.func likelihhod function to be parsed to the ProFit: "t": t-distribution, "norm": normal distribution. See ProFit package for more details.
 #' @param catalog_name The name of GRAFit's output catalogue.
-#' @param keep_wrk_space A logical value. Should the work space be saved. Default: \code{TRUE}.
-#' @param verbose A logical value. Verbose.
-#' @param plot A logical value. Should plots be generated or just the structural catalogue.
-#' @param add_hdr A logical value. Should a header be appended to the top of the catalogue. Default = \code{TRUE}. Usefull for some large runs on supercomputers large dataset is splitted into several chunks.
-#' @param DoPriors A logical value. Should a prior distribution be applied to the fitting process. Default = \code{TRUE}.
-#' @param DoConstraits A logical value. Should constraints be applied to the fitting process. Default = \code{TRUE}.
+#' @param keep_wrk_space Logical; Should the work space be saved. Default: \code{TRUE}.
+#' @param verbose Logical; Verbose.
+#' @param plot Logical; Should plots be generated or just the structural catalogue.
+#' @param add_hdr Logical; Should a header be appended to the top of the catalogue. Default = \code{TRUE}. Usefull for some large runs on supercomputers large dataset is splitted into several chunks.
+#' @param DoPriors Logical; Should a prior distribution be applied to the fitting process. Default = \code{TRUE}.
+#' @param DoConstraits Logical; Should constraints be applied to the fitting process. Default = \code{TRUE}.
 #' @return GRAFit's output is a structural catalogue (catalog_name.csv) as well as a folder named with the object's ID containing plots and figures of the initial and final models.
+#' @author Hosein Hashemizadeh
+#' @seealso \code{\link[GRAFit]{GRAFitDynamo_v2}}
 #' @examples
 #' GRAFitMaster(wrk_dir = '~/Desktop/wrk_dir/', data_dir = '~/Desktop/data_dir/', PSF_dir = ~/Desktop/PSF_dir/, threadMode = 0, ncores = 1, nComp= 2, optimMode = 'MCMC', object_list = c(103513757))
 #' @export
@@ -78,6 +81,7 @@ GRAFitMaster <- function( wrk_dir = NULL, data_dir = NULL, GRAFitlib = NULL, PSF
   if (!"LaplacesDemon" %in% rownames(installed.packages())) install.packages('LaplacesDemon', dependencies = T)
   if (!"RColorBrewer" %in% rownames(installed.packages())) install.packages('RColorBrewer', dependencies = T)
   if (!"Cairo" %in% rownames(installed.packages())) install.packages('Cairo', dependencies = T)
+  # if (!"AllStarFit" %in% rownames(installed.packages())) install_github("taranu/AllStarFit")
 
   ######################################
   ########## PREPARE INPUT FOR PROFIT ##########
@@ -109,7 +113,7 @@ GRAFitMaster <- function( wrk_dir = NULL, data_dir = NULL, GRAFitlib = NULL, PSF
       library(EBImage)
       library(foreach)
       library(doParallel)
-      library(AllStarFit)
+      # library(AllStarFit)
       # library(OpenImageR)
 
       error = "ERROR in: loading GRAFit library"
@@ -144,7 +148,6 @@ GRAFitMaster <- function( wrk_dir = NULL, data_dir = NULL, GRAFitlib = NULL, PSF
       source(paste(GRAFitlib,'/GRAFitMakeSlurm.R',sep=''))
       source(paste(GRAFitlib,'/GRAFitMakeSlurmSingle.R',sep=''))
       source(paste(GRAFitlib,'/GRAFitAddhdr.R',sep=''))
-      source(paste(GRAFitlib,'/GRAFitAddhdr_1.R',sep=''))
       source(paste(GRAFitlib,'/GRAFitPSFMakeStack.R',sep=''))
 
       error = " ERROR: in taking object list column info."
@@ -234,8 +237,9 @@ GRAFitMaster <- function( wrk_dir = NULL, data_dir = NULL, GRAFitlib = NULL, PSF
 
       # Find frame name.
       error = "ERROR in: Frame finding"
-      frame_im_name = GRAFitFrameFinder_v2(GRAFitlib = GRAFitlib, data_dir = data_dir,
-                                        target_loc = c(ra_deg, dec_deg))
+      frame_im_name = GRAFitFrameFinder_v2(GRAFitlib = GRAFitlib,
+                                           data_dir = data_dir,
+                                           target_loc = c(ra_deg, dec_deg))
 
       if(verbose) cat(' Found galaxy in frame:: ', frame_im_name, '\n')
       log2 = paste(' Found galaxy in frame:: ', frame_im_name)
@@ -343,7 +347,7 @@ GRAFitMaster <- function( wrk_dir = NULL, data_dir = NULL, GRAFitlib = NULL, PSF
       # sig=paste(wrk_dir,'/','input_fits','/','sigma.fits',sep="")
       # write.fits(sigma, file=sig)
 #
-#       psf = GRAFitPSFgenerator(wrk_dir = wrk_dir, GRAFitlib = GRAFitlib, output_dir = output_dir, data_dir = data_dir,
+#       psf = GRAFitPSFgenerator(wrk_dir = wrk_dir, GRAFitlib = GRAFitlib, output_dir = output_dir, HST_Focus_val_file = data_dir,
 #                                target_loc = c(ra_deg, dec_deg), header = frame_hdr, exBmV = object_list$EBV[j], verbose = verbose )
 
       error = "ERROR in: PSF generation."
@@ -359,7 +363,7 @@ GRAFitMaster <- function( wrk_dir = NULL, data_dir = NULL, GRAFitlib = NULL, PSF
         error = "ERROR in: old PSF generation."
         PSF_name = "psf_1"
         psf1 = GRAFitPSFgenerator(wrk_dir = wrk_dir, GRAFitlib = GRAFitlib, output_dir = output_dir, PSF_name = PSF_name,
-                                  data_dir = data_dir, header = frame_hdr, target_loc = c(object_list$X_1[j], object_list$Y_1[j]), loc_Unit = "xy",
+                                  HST_Focus_val_file = data_dir, header = frame_hdr, target_loc = c(object_list$X_1[j], object_list$Y_1[j]), loc_Unit = "xy",
                                   CCDCHIP = object_list$CCDCHIP_1[j], filter = "f814w", jitter = 3, ebmv = EBV,
                                   EXPSTART = EXPSTART, PSF_diameter= PSF_diameter, verbose = verbose )
         finalPSF = readFITS(paste(output_dir,"/",PSF_name,'_image00.fits', sep = ""))$imDat
@@ -369,28 +373,28 @@ GRAFitMaster <- function( wrk_dir = NULL, data_dir = NULL, GRAFitlib = NULL, PSF
         tiny_SUB = 5
         PSF_name = "psf_1"
         psf1 = GRAFitPSFgenerator(wrk_dir = wrk_dir, GRAFitlib = GRAFitlib, output_dir = output_dir, PSF_name = PSF_name,
-                                data_dir = data_dir, header = frame_hdr, target_loc = round(c(object_list$X_1[j], object_list$Y_1[j])), loc_Unit = "xy",
+                                HST_Focus_val_file = data_dir, header = frame_hdr, target_loc = round(c(object_list$X_1[j], object_list$Y_1[j])), loc_Unit = "xy",
                                 CCDCHIP = object_list$CCDCHIP_1[j], filter = "f814w", jitter = 3, ebmv = EBV,
                                 EXPSTART = EXPSTART, PSF_diameter= PSF_diameter, SUB = tiny_SUB, verbose = verbose )
         psf1 = readFITS(paste(output_dir,"/",PSF_name,'_image00.fits', sep = ""))
 
         PSF_name = "psf_2"
         psf2 = GRAFitPSFgenerator(wrk_dir = wrk_dir, GRAFitlib = GRAFitlib, output_dir = output_dir, PSF_name = PSF_name,
-                                  data_dir = data_dir, header = frame_hdr, target_loc = round(c(object_list$X_2[j], object_list$Y_2[j])), loc_Unit = "xy",
+                                  HST_Focus_val_file = data_dir, header = frame_hdr, target_loc = round(c(object_list$X_2[j], object_list$Y_2[j])), loc_Unit = "xy",
                                   CCDCHIP = object_list$CCDCHIP_2[j], filter = "f814w", jitter = 3, ebmv = EBV,
                                   EXPSTART = EXPSTART,PSF_diameter= PSF_diameter, SUB = tiny_SUB, verbose = verbose )
         psf2 = readFITS(paste(output_dir,"/",PSF_name,'_image00.fits', sep = ""))
 
         PSF_name = "psf_3"
         psf3 = GRAFitPSFgenerator(wrk_dir = wrk_dir, GRAFitlib = GRAFitlib, output_dir = output_dir, PSF_name = PSF_name,
-                                  data_dir = data_dir, header = frame_hdr, target_loc = round(c(object_list$X_3[j], object_list$Y_3[j])), loc_Unit = "xy",
+                                  HST_Focus_val_file = data_dir, header = frame_hdr, target_loc = round(c(object_list$X_3[j], object_list$Y_3[j])), loc_Unit = "xy",
                                   CCDCHIP = object_list$CCDCHIP_3[j], filter = "f814w", jitter = 3, ebmv = EBV,
                                   EXPSTART = EXPSTART, PSF_diameter= PSF_diameter, SUB = tiny_SUB, verbose = verbose )
         psf3 = readFITS(paste(output_dir,"/",PSF_name,'_image00.fits', sep = ""))
 
         PSF_name = "psf_4"
         psf4 = GRAFitPSFgenerator(wrk_dir = wrk_dir, GRAFitlib = GRAFitlib, output_dir = output_dir, PSF_name = PSF_name,
-                                  data_dir = data_dir, header = frame_hdr, target_loc = round(c(object_list$X_4[j], object_list$Y_4[j])), loc_Unit = "xy",
+                                  HST_Focus_val_file = data_dir, header = frame_hdr, target_loc = round(c(object_list$X_4[j], object_list$Y_4[j])), loc_Unit = "xy",
                                   CCDCHIP = object_list$CCDCHIP_4[j], filter = "f814w", jitter = 3, ebmv = EBV,
                                   EXPSTART = EXPSTART, PSF_diameter= PSF_diameter, SUB = tiny_SUB, verbose = verbose )
         psf4 = readFITS(paste(output_dir,"/",PSF_name,'_image00.fits', sep = ""))
@@ -433,7 +437,7 @@ print("Doing model setup")
         error = "ERROR in: model optim"
         optim = GRAFitOptim( output_dir = output_dir, GRAFitlib = GRAFitlib,
                              Model = profitLikeModel, Data = Data, verbose = verbose,
-                             nComp = nComp, pixscale = pix_scale, FWHM = 0.09, main_src = main_src,
+                             nComp = nComp, pixscale = pix_scale, FWHM = 0.09,
                              SBlim = 26, zeropoint = ZP )
 
         optimfit <- optim$optimfit
@@ -470,9 +474,12 @@ print("Doing model setup")
         ##########  Laplace Approximation  #############
 # print("LA")
 #         error = "ERROR in: LA"
-#         LA = GRAFitLA(Model =  profitLikeModel, Initial.Values = Data$init,
-#                       Data = Data, iteration = LA_iteration, verbose = verbose)
-#
+        # LA = GRAFitLA(Model =  profitLikeModel,
+        #               Initial.Values = Data$init,
+        #               Data = Data,
+        #               iteration = LA_iteration,
+        #               verbose = verbose)
+
 #         LAfit <- LA$LAfit
 #         modelLA <- LA$modelLA
 #
@@ -684,7 +691,7 @@ print("Doing model setup")
       CairoPNG( 1000, 800, file = paste(output_dir,'/SBprofile.png', sep = ""), res = 100 )    # added for test
         GRAFitSBprofile( image = image, main_source = main_src, segim = segim, model = model_noise, zeropoint = ZP,
                         comp = "bd", centerPos = c( optim_xcen1, optim_ycen1 ),
-                        col = 'green', modelOPlot = TRUE, legend = TRUE, title = "Surface Brightness Profile")
+                        col = 'green', modelPlot = TRUE, legend = TRUE, title = "Surface Brightness Profile")
 
       invisible(
         if (nComp == 2 ) {
@@ -692,29 +699,18 @@ print("Doing model setup")
           GRAFitSBprofile( image = image, main_source = main_src, segim = segim,
                           model = disk_model$z, zeropoint = ZP,
                           comp = "d", centerPos = c( optim_xcen1, optim_ycen1 ),
-                          modelOPlot = TRUE, col= 'blue', legend = FALSE )
+                          modelPlot = TRUE, col= 'blue', legend = FALSE )
           par( new = TRUE )
           GRAFitSBprofile( image = image, main_source = main_src, segim = segim,
                           model = bulge_model$z, zeropoint = ZP,
                           comp = "b", centerPos = c( optim_xcen1, optim_ycen1 ),
-                          modelOPlot = TRUE, col = 'red', legend = FALSE )
+                          modelPlot = TRUE, col = 'red', legend = FALSE )
         }
       ) # end of invisible
       dev.off()
 
       log12=' SBProfile Plot:: DONE :D '
 
-      # plot.new();par(mfcol=c(1,1))
-      # GRAFitSBdistr(image=image,main_source=main_src,segim=segim,model=model_noise, bulge_Model = bulge_model_noise, disk_Model = disk_model_noise)
-
-      ######### Save Image, Initial model, Fit model and Fit model+Random Nois ###########
-
-      # png(file = paste(output_dir,'/all_images.png', sep = ""),width=10.4,height=3,units="in",res=300)
-      # error = "ERROR in: GRAFit imager"
-      # CairoPNG( 2100, 610, file = paste( output_dir,'/all_images.png', sep = "" ), res = 200)
-      #   GRAFitImager( image = image, InitialModel = Initial_model$z,
-      #                FinalModel = final_model$z, ModelNoise = model_noise, Data = Data )
-      # dev.off()
 
       t2 = (proc.time()-t1)/3600
       elapsed_time = t2[[3]]

@@ -35,7 +35,7 @@ GRAFitMaster(
 \arguments{
 \item{wrk_dir}{Working directory, where the GRAFit outputs will be saved.}
 
-\item{data_dir}{The directory where the imaging data is stored.}
+\item{data_dir}{The directory where the imaging data (frames) is stored.}
 
 \item{PSF_dir}{The directory where pre-generated PSFs are stored. If this is not provided the PSF can be put into the wrk_dir. Alternatively, GRAFit will generate PSF for each galaxy.}
 
@@ -45,7 +45,7 @@ GRAFitMaster(
 
 \item{ncores}{Number of CPUs to be used in parallel mode. Default = 1}
 
-\item{logfile}{A logical value. Should a log file be generated. Default = \code{TRUE}}
+\item{logfile}{Logical; Should a log file be generated. Default = \code{TRUE}}
 
 \item{nComp}{Number of components to be used in fitting. Default = 2 for a bulge+disk model. Alternatively could be 1 for a single Sersic model.}
 
@@ -55,9 +55,9 @@ GRAFitMaster(
 
 \item{MCMC_iteration}{The iterations for \code{MCMC} optimization if optimMode = 'MCMC'. Default = 10000}
 
-\item{ExpDisk}{A logical value. Should the disk be fitted with a pure exponential profile (\code{Sersic index = 1}). Default = \code{FALSE}; for a free Sersic profile.}
+\item{ExpDisk}{Logical; Should the disk be fitted with a pure exponential profile (\code{Sersic index = 1}). Default = \code{FALSE}; for a free Sersic profile.}
 
-\item{FreeBulge}{A logical value. Should the bulge location (\code{x \& y}) also be fitted by GRAFit. Default = \code{FALSE}, i.e. the bulge position will be fixed to the disk position.}
+\item{FreeBulge}{Logical; Should the bulge location (\code{x \& y}) also be fitted by GRAFit. Default = \code{FALSE}, i.e. the bulge position will be fixed to the disk position.}
 
 \item{BulgeFreeness}{In unit pixels. How many pixels the bulge position is allowed to be free from the centre of disk. Default = 11.}
 
@@ -69,24 +69,30 @@ GRAFitMaster(
 
 \item{catalog_name}{The name of GRAFit's output catalogue.}
 
-\item{keep_wrk_space}{A logical value. Should the work space be saved. Default: \code{TRUE}.}
+\item{keep_wrk_space}{Logical; Should the work space be saved. Default: \code{TRUE}.}
 
-\item{verbose}{A logical value. Verbose.}
+\item{verbose}{Logical; Verbose.}
 
-\item{plot}{A logical value. Should plots be generated or just the structural catalogue.}
+\item{plot}{Logical; Should plots be generated or just the structural catalogue.}
 
-\item{add_hdr}{A logical value. Should a header be appended to the top of the catalogue. Default = \code{TRUE}. Usefull for some large runs on supercomputers large dataset is splitted into several chunks.}
+\item{add_hdr}{Logical; Should a header be appended to the top of the catalogue. Default = \code{TRUE}. Usefull for some large runs on supercomputers large dataset is splitted into several chunks.}
 
-\item{DoPriors}{A logical value. Should a prior distribution be applied to the fitting process. Default = \code{TRUE}.}
+\item{DoPriors}{Logical; Should a prior distribution be applied to the fitting process. Default = \code{TRUE}.}
 
-\item{DoConstraits}{A logical value. Should constraints be applied to the fitting process. Default = \code{TRUE}.}
+\item{DoConstraits}{Logical; Should constraints be applied to the fitting process. Default = \code{TRUE}.}
 }
 \value{
 GRAFit's output is a structural catalogue (catalog_name.csv) as well as a folder named with the object's ID containing plots and figures of the initial and final models.
 }
 \description{
-GRAFit: Master code for connecting and calling other modules.
+This code is considered as the core code of the GRAFit that connects all other parts and calls modules where needed.
 }
 \examples{
 GRAFitMaster(wrk_dir = '~/Desktop/wrk_dir/', data_dir = '~/Desktop/data_dir/', PSF_dir = ~/Desktop/PSF_dir/, threadMode = 0, ncores = 1, nComp= 2, optimMode = 'MCMC', object_list = c(103513757))
+}
+\seealso{
+\code{\link[GRAFit]{GRAFitDynamo_v2}}
+}
+\author{
+Hosein Hashemizadeh
 }
