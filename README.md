@@ -75,7 +75,7 @@ You should provide: \* a working directory where the outputs will be saved.
 
 -   If any, a directory where you have stored your pre-generated Point Spread Function (PSF) for each object. Otherwise, you may leave a PSF in your wrk\_dir or alternatively GRAFit will generate a PSF using Tiny Tim.
 
-This is a basic example which shows you how to run GRAFit:
+-   Note that `object_list` should include at list the RA and DEC. This is a basic example which shows you how to run GRAFit:
 
 ``` r
 # GRAFitMaster(wrk_dir = "wrk_dir", 
