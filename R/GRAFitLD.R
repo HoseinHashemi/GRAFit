@@ -23,10 +23,6 @@ GRAFitLD <- function( output_dir = output_dir, GRAFitlib = GRAFitlib, Model = pr
                       Initial.Values = NULL, Data = Data, iteration = 1e4, zeropoint = ZP, pixscale = 0.03,
                       FWHM = 0.09, SBlim = 26, Algorithm = 'CHARM', verbose = TRUE, ... ) {
 
-  source(paste(GRAFitlib,'/GRAFitAddFakeBulge.R', sep=''))
-  source(paste(GRAFitlib,'/GRAFitEllipsePlot.R',sep=''))
-  source(paste(GRAFitlib,'/GRAFitri.R',sep=''))
-
   if( verbose ) cat("*** Performing FULL MCMC: Laplaces Demon ......", '\n')
 
   Data$algo.func="LD"   # if don't change the algorithm you'll get the ERROR: "Model must return a list.true"

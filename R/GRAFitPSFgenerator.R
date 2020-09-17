@@ -28,8 +28,6 @@ GRAFitPSFgenerator <- function(wrk_dir = wrk_dir, GRAFitlib = GRAFitlib, output_
                                header = NULL, ebmv = 0, SUB = 1, PSF_diameter = 1, down_sample_factor, verbose = TRUE ) {
 
 
-  source(paste(GRAFitlib,'/GRAFitTinyTimACS.R',sep=''))
-
   if (missing(CCDCHIP)) CCDCHIP= as.numeric( header[which(header == "CCDCHIP")+1] )
   if (missing(filter)) filter = as.character( header[which(header == "FILTER2")+1] )
   if (missing(EXPSTART)) EXPSTART = as.numeric( header[which(header == "EXPSTART")+1] )

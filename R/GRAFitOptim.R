@@ -16,16 +16,11 @@
 #' @examples -
 #' @export
 
-
-
 GRAFitOptim <- function( output_dir = output_dir, GRAFitlib = GRAFitlib, Model = profitLikeModel, nComp = 2,
                       Initial.Values = NULL, Data = Data, Algorithm = 'BFGS', zeropoint = ZP,
                       verbose = TRUE, ... ) {
 
   if( verbose ) cat("Running optimfit ......", '\n')
-
-  source(paste(GRAFitlib,'/GRAFitAddFakeBulge.R', sep=''))
-  source(paste(GRAFitlib,'/GRAFitEllipsePlot.R',sep=''))
 
   optimfit = optim(par = Data$init, Model, method = Algorithm,
                    Data = Data, control = list(fnscale = -1)) #,parscale=sigmas[which(unlist(tofit))]   method='L-BFGS-B'
@@ -56,3 +51,4 @@ GRAFitOptim <- function( output_dir = output_dir, GRAFitlib = GRAFitlib, Model =
 
 }
 
+# END

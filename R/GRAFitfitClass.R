@@ -9,11 +9,6 @@
 #' @examples -
 #' @export
 
-
-
-# Authot: Hosein Hashemi June 2018.
-# This function classify galaxies in different classes regarding their 1D light profile.
-
 GRAFitfitClass <- function(SB = NULL, SBlim = 26) {
 
   if (is.null(SB)) {
@@ -75,5 +70,5 @@ GRAFitfitClass <- function(SB = NULL, SBlim = 26) {
 return(fitClass = fitClass)
 
 }
-# DONE!
+# END!
 

@@ -8,9 +8,6 @@
 #' @examples -
 #' @export
 
-
-# This function reads all the frames' headers and writes out the location (RA & DEC) of the frams' center into a csv file: "frame_cen_cor.csv"
-
 GRAFitFrameCenFinder <- function(data_dir = NULL) {
 
   file_names = list.files(path = data_dir , full.names = FALSE, pattern = "*.fits")

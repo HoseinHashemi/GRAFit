@@ -36,11 +36,6 @@ GRAFitDynamo_v2 <- function( im = NULL, loc = c(ra_deg, dec_deg), init_xrad = NU
                              ImPlot = TRUE, output_dir = NULL, ... ) {
 
   if(verbose) cat( paste( "*** Doing Dynamic cut-out ", sep = "" ),'\n' )
-  source(paste(GRAFitlib,'/GRAFitMainFinder.R',sep = ''))
-  source(paste(GRAFitlib,'/GRAFitcutoutWCS.R',sep=''))
-  source(paste(GRAFitlib,'/GRAFitcutout.R',sep=''))
-  source(paste(GRAFitlib,'/GRAFitStarPinPoint.R',sep=''))
-  # plot.new()
 
   if (!is.null(init_xrad)) {
     xrad = init_xrad; yrad = init_yrad  # in arcsec

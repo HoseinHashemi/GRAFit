@@ -32,9 +32,6 @@ GRAFitInitModelSetupConst <- function( output_dir = NULL, GRAFitlib = GRAFitlib,
                                   segim = segim, psf = psf, SBlim = SBlim, like.func = "t",
                                   DoPriors = TRUE, DoConstraits = TRUE )  {
 
-  source(paste(GRAFitlib,'/GRAFitAddFakeBulge.R', sep=''))
-  source(paste(GRAFitlib,'/GRAFitEllipsePlot.R',sep=''))
-
   if (missing(output_dir)) output_dir = getwd()
 
   if (nComp == 2) {

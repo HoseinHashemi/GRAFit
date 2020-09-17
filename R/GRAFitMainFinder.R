@@ -21,7 +21,7 @@ GRAFitMainFinder = function(src_list = NULL, imDim = NULL, main_pin = FALSE) {
     sepArr[i] = sqrt( (src_list$xcen[i] - x0)^2 + (src_list$ycen[i] - y0)^2 )
   }
 
-  mainObj = which.min(sepArr) # Main source is the one with the smallest separation from the image centre
+  mainObj = which.min(sepArr) # Main source is the one with the minimum separation from the cutout centre
   main = src_list[mainObj, ]
 
   if (main_pin) points(main$xmax, main$ymax, pch= 4, col = 'red')

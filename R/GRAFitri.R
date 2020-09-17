@@ -15,9 +15,6 @@
 #' GRAFitri(chains,tick = TRUE)
 #' @export
 
-# Author: Aaron Robotha as part of magicaxis package.
-# Modified by : Hosein Hashemi as part of GRAFit package.
-
 GRAFitri <- function (chains, samples, samptype = "end", grid = FALSE, tick = FALSE)
 {
 

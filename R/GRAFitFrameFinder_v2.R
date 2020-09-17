@@ -10,20 +10,13 @@
 #' @examples -
 #' @export
 
-
-# Author: Hosein Hashemizadeh as part of GRAFit package.
-# target_loc: is the Ra and Dec of the target object.
-# FrameType: "driz" & "raw" for the drizzled and raw ACS frames, repectively.
-
 GRAFitFrameFinder_v2 <- function(GRAFitlib = GRAFitlib,
                                  data_dir = NULL,
                                  target_loc = NULL,
                                  FrameType = "driz") {
 
-  source(paste(GRAFitlib,'/GRAFitFrameCenFinder.R',sep = ''))
-  source(paste(GRAFitlib,'/GRAFitFrameCenFinderRawFrame.R',sep = ''))
   # ########## READ FRAMES FITS HEADERS ####
-  # Read FITS files and write the TARGET'S RA AND DEC (i.e. the centre of frames)
+  # Read FITS files and write TARGET'S RA AND DEC (i.e. the centre of frames)
   # in a file name: target_cor.csv  ----------------------------
 
   if (FrameType == "driz") {

@@ -17,14 +17,8 @@
 #' @examples -
 #' @export
 
-
-# Author: Aaron Robotham as part of the ProFit package (original: ProFitEllipsePlot).
-# Modified by: Hosein Hashemizadeh as part of the GRAFit package.
-
 GRAFitEllipsePlot <- function (Data, modellist, bulgeloc = 1, diskloc = 2, pixscale = 1,
           FWHM = 0.09, SBlim = 26, df = 100, raw = FALSE, plot = TRUE, main_src = NULL, GRAFitlib = GRAFitlib)
-{
-  source(paste(GRAFitlib,'/GRAFitfitClass.R', sep=''))
 
   if (missing(Data)) {
     stop("Data object of class profit.data must be provided!")
