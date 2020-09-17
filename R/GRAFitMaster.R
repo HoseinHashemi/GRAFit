@@ -4,7 +4,7 @@
 #' @param wrk_dir Working directory, where the GRAFit outputs will be saved.
 #' @param data_dir The directory where the imaging data (frames) is stored.
 #' @param PSF_dir The directory where pre-generated PSFs are stored. If this is not provided the PSF can be put into the wrk_dir. Alternatively, GRAFit will generate PSF for each galaxy.
-#' @param object_list List of CATAIDs that you wish to fit.
+#' @param object_list A catalogue of objects you wish to fit, should include: CATAID, RA, DEC, etc.
 #' @param threadMode specifies the thereading mode of the parallel mode of the GRAFit. 0: snow-like, suitable for laptops 1: using Rmpi, suitable for large clusters like supercomputers.
 #' @param ncores Number of CPUs to be used in parallel mode. Default = 1
 #' @param logfile Logical; Should a log file be generated. Default = \code{TRUE}
@@ -29,7 +29,7 @@
 #' @author Hosein Hashemizadeh
 #' @seealso \code{\link[GRAFit]{GRAFitDynamo_v2}}
 #' @examples
-#' GRAFitMaster(wrk_dir = '~/Desktop/wrk_dir/', data_dir = '~/Desktop/data_dir/', PSF_dir = ~/Desktop/PSF_dir/, threadMode = 0, ncores = 1, nComp= 2, optimMode = 'MCMC', object_list = c(103513757))
+#' GRAFitMaster(wrk_dir = '~/Desktop/wrk_dir/', data_dir = '~/Desktop/data_dir/', PSF_dir = '~/Desktop/PSF_dir/', threadMode = 0, ncores = 1, nComp= 2, optimMode = 'MCMC', object_list = c(103513757))
 #' @export
 
 # devtools::install_github("renkun-ken/formattable")
