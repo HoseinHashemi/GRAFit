@@ -67,9 +67,9 @@ Install GRAFit from [GitHub](https://github.com/hoseinhashemi/GRAFit) with:
 Example
 -------
 
-In principle, you only need to use one function of GRAFit; `GRAFitMaster`. This function calls whatever it needs to do the fitting.
+In principle, you need to interact with only one GRAFit function; `GRAFitMaster`. This function calls whatever it needs to do the fitting.
 
-You should provide: - a working directory where the outputs will be saved.
+You should provide: \* a working directory where the outputs will be saved.
 
 -   a directory where the your imaging data is stored.
 
@@ -87,3 +87,13 @@ This is a basic example which shows you how to run GRAFit:
 #              optimMode = 'MCMC', 
 #              object_list = object_list)
 ```
+
+Contributor(s)
+--------------
+
+Hosein Hashemizadeh
+
+License
+-------
+
+L-GPL3
