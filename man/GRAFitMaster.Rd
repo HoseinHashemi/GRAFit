@@ -39,7 +39,7 @@ GRAFitMaster(
 
 \item{PSF_dir}{The directory where pre-generated PSFs are stored. If this is not provided the PSF can be put into the wrk_dir. Alternatively, GRAFit will generate PSF for each galaxy.}
 
-\item{object_list}{List of CATAIDs that you wish to fit.}
+\item{object_list}{A catalogue of objects you wish to fit, should include: CATAID, RA, DEC, etc.}
 
 \item{threadMode}{specifies the thereading mode of the parallel mode of the GRAFit. 0: snow-like, suitable for laptops 1: using Rmpi, suitable for large clusters like supercomputers.}
 
@@ -88,7 +88,7 @@ GRAFit's output is a structural catalogue (catalog_name.csv) as well as a folder
 This code is considered as the core code of the GRAFit that connects all other parts and calls modules where needed.
 }
 \examples{
-GRAFitMaster(wrk_dir = '~/Desktop/wrk_dir/', data_dir = '~/Desktop/data_dir/', PSF_dir = ~/Desktop/PSF_dir/, threadMode = 0, ncores = 1, nComp= 2, optimMode = 'MCMC', object_list = c(103513757))
+GRAFitMaster(wrk_dir = '~/Desktop/wrk_dir/', data_dir = '~/Desktop/data_dir/', PSF_dir = '~/Desktop/PSF_dir/', threadMode = 0, ncores = 1, nComp= 2, optimMode = 'MCMC', object_list = c(103513757))
 }
 \seealso{
 \code{\link[GRAFit]{GRAFitDynamo_v2}}

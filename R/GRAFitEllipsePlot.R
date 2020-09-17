@@ -18,7 +18,7 @@
 #' @export
 
 GRAFitEllipsePlot <- function (Data, modellist, bulgeloc = 1, diskloc = 2, pixscale = 1,
-          FWHM = 0.09, SBlim = 26, df = 100, raw = FALSE, plot = TRUE, main_src = NULL, GRAFitlib = GRAFitlib)
+          FWHM = 0.09, SBlim = 26, df = 100, raw = FALSE, plot = TRUE, main_src = NULL, GRAFitlib = GRAFitlib) {
 
   if (missing(Data)) {
     stop("Data object of class profit.data must be provided!")

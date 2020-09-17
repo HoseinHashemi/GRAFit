@@ -5,7 +5,7 @@ Version: 0.1.0
 Author: Hosein Hashemizadeh
 Maintainer: Hosein Hashemizadeh <abdol.hashemi@gmail.com>
 Description: GRAFit is an automatic pipeline for galaxy structural decomposition, also known as bulge-disk decomposition. GRAFit is oroginally designed for the Hubble Space Telescope (HST) high-resolution imaging data, however, it can be used widely on any astronomical images containing a galaxy. 
-License: L-GPL3+
+License: LGPL-3+
 Encoding: UTF-8
 LazyData: true
 Imports: astro,
