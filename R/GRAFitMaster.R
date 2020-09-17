@@ -420,8 +420,8 @@ print("Doing model setup")
       if (optimMode == "MCMC") {
 
         ##########  Laplace Approximation  #############
-# print("LA")
-#         error = "ERROR in: LA"
+        # print("LA")
+        # error = "ERROR in: LA"
         # LA = GRAFitLA(Model =  profitLikeModel,
         #               Initial.Values = Data$init,
         #               Data = Data,
@@ -457,13 +457,7 @@ print("Doing model setup")
 #         LD_InitVal = LAfit$Summary1[,1]
           LD_InitVal = NULL
         ######### MCMC ##########
-        #
-        #     is.model(profitLikeModel, Initial.Values=Data$init, Data=Data)
-        #      LDfit=LaplacesDemon.hpc(profitLikeModel, Initial.Values=Data$init, Data=Data,
-        #                              Iterations=1e4, Algorithm='CHARM', Thinning=1,
-        #                              Specs=list(alpha.star=0.44), Chains=10, CPUs=10)
-
-        ##########  Laplaces Demon  ###########
+        #########  Laplaces Demon  ##########
         print("LD")
 
         error = "ERROR in: LD"
