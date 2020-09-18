@@ -642,7 +642,7 @@ print("Doing model setup")
       error = "ERROR in: surface brightness profile plotting"
       par( mfcol = c(1,1) )
       # png(file = paste(output_dir,'/SBprofile.png', sep = ""), width = 10, height = 8, units="in", res=300)
-      CairoPNG( 1000, 800, file = paste(output_dir,'/SBprofile.png', sep = ""), res = 100 )    # added for test
+      png( 1000, 800, file = paste(output_dir,'/SBprofile.png', sep = ""), res = 100 )    # added for test
         GRAFitSBprofile( image = image, main_source = main_src, segim = segim, model = model_noise, zeropoint = ZP,
                         comp = "bd", centerPos = c( optim_xcen1, optim_ycen1 ),
                         col = 'green', modelPlot = TRUE, legend = TRUE, title = "Surface Brightness Profile")
