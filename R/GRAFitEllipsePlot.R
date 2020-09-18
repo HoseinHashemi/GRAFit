@@ -161,7 +161,7 @@ GRAFitEllipsePlot <- function (Data, modellist, bulgeloc = 1, diskloc = 2, pixsc
            col = c("black", "green", "red", "blue", "purple"), bg = "white")
     magplot(predict.image$x, predict.image$y - predict.total$y,
             type = "l", xlim = c(0, xhi), ylim = c(-0.5, 0.5), col = "green",
-            xlab = xlab, ylab = ylab2, grid = FALSE, labels = c(T, T))
+            xlab = xlab, ylab = ylab2, grid = FALSE, labels = c(T, T), lwd = 2)
     polygon(sigma.polygon[, 1], sigma.polygon[, 2] - c(predict.total$y, rev(predict.total$y)),
             col = hsv(v = 0, alpha = 0.1), border = NA)
     abline(h = 0)

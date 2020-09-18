@@ -551,7 +551,7 @@ print("Doing model setup")
       ###############################################################
       error = "ERROR in: fit_stat plotting"
       # png(file = paste(output_dir,"/","fit_stat.png",sep = ""), width = 21, height = 12, units = "cm", res = 200 )
-      CairoPNG( 1700, 1700, file = paste(output_dir,"/","ModelStat.png",sep = ""), res = 200)
+      png( 1700, 1700, file = paste(output_dir,"/","ModelStat.png",sep = ""), res = 200)
       # par( mfcol = c(1,2) )
         layout(matrix(c(2,3,1,1), 2, 2 , byrow = F), widths = c(2,2,2), heights = c(2.27,2.27,2), respect = T)
         ylim = 13; xlim = 40
@@ -579,8 +579,20 @@ print("Doing model setup")
         text(0.6, ylim-12, paste("DIC1 = ", format(DIC1, digits = 6)), adj = 0, cex = 1.3)
         text(0.6, ylim-13, paste("t = ", format(elapsed_time, digits = 5), "h"), adj = 0, cex = 1.3)
 
-        magimage(dyn_cut$orig_image); title("Original")
-        magimage(dyn_cut$sky_red_image); title("Background Subtracted")
+        magimage(dyn_cut$orig_image,
+                 xlab = "x/pix", ylab = "y/pix",
+                 cex.lab = 1.5,
+                 cex.axis = 1.5,
+                 mgp = c(2.2,1.2,0),
+                 mtline = 3.5)
+        title("Original")
+        magimage(dyn_cut$sky_red_image,
+                 xlab = "x/pix", ylab = "y/pix",
+                 cex.lab = 1.5,
+                 cex.axis = 1.5,
+                 mgp = c(2.2,1.2,0),
+                 mtline = 3.5)
+        title("Background Subtracted")
 
       dev.off()
 

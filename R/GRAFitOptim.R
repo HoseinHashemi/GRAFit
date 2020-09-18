@@ -31,11 +31,11 @@ GRAFitOptim <- function( output_dir = output_dir, GRAFitlib = GRAFitlib, Model =
     profitLikeModel( optimfit$par, Data, makeplots = TRUE, whichcomponents = list(sersic = 'all') )
   dev.off()
 
-  png(file = paste( output_dir, 'optim_chisq.png', sep = "/"), width = 10, height = 7, units = "in", res = 200)
+  png(file = paste( output_dir, 'optim_chisq.png', sep = "/"), width = 9.5, height = 6, units = "in", res = 200)
     profitLikeModel(optimfit$par, Data, makeplots = TRUE, whichcomponents = list(sersic = 'all'), plotchisq = T)
   dev.off()
 
-    png(file = paste(output_dir, 'optim_1D_profile.png', sep = "/"), width = 10, height = 7, units = "in", res = 200)
+    png(file = paste(output_dir, 'optim_1D_profile.png', sep = "/"), width = 8, height = 5, units = "in", res = 200)
       if (nComp == 1){
         fakemodellist = GRAFitAddFakeBulge( model =  modeloptim, zeropoint = zeropoint )
         SBprof = GRAFitEllipsePlot( Data = Data, modellist = fakemodellist, GRAFitlib = GRAFitlib, ...)

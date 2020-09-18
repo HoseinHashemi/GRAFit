@@ -156,17 +156,35 @@ GRAFitDynamo_v2 <- function( im = NULL, loc = c(ra_deg, dec_deg), init_xrad = NU
                                  imDim = dim(cut_im_final_orig$image))
 
   if (!is.null(output_dir)) {
-    png(filename = paste(output_dir,"/postage_stamps.png", sep = ''),
-             width = 1000, height = 1068)
-      par(mfrow = c(2,2), cex.lab = 2, cex.axis =2)
-      profoundSegimPlot(image, seg$segim)
-      title(main = "Initial cut out = 15R90 (Y UltraVISTA)", cex.main = 2)
-      profoundSegimPlot(cut_im_final_orig$image, segim$image)
-      title(main = paste("Final cut out = ",i, "R90 (Y UltraVISTA)", sep = ''), cex.main = 2)
-      magimage(seg$sky)
-      title(main = "sky", cex.main = 2)
-      profoundSkyEst(image = image, objects = seg$objects_redo, plot = TRUE)
-      title(main = "sky pix val distribution", cex.main = 2)
+    png(filename = paste(output_dir,"/stamps.png", sep = ''),
+             width = 1200, height = 1275)
+      par(mfrow = c(2,2), oma = c(4, 4, 4, 4))  #, cex.lab = 3, cex.axis = 3
+      profoundSegimPlot(image, seg$segim,
+                        xlab = "x/pix", ylab = "y/pix",
+                        cex.lab = 3,
+                        cex.axis = 3,
+                        mgp = c(2.5,1.5,0),
+                        mtline = 5)
+      title(main = "Initial cut out = 15R90 (Y UltraVISTA)", cex.main = 2.5)
+      profoundSegimPlot(cut_im_final_orig$image, segim$image,
+                        xlab = "x/pix", ylab = "",
+                        cex.lab = 3,
+                        cex.axis = 3,
+                        mgp = c(2.5,1.5,0),
+                        mtline = 5)
+      title(main = paste("Final cut out = ",i, "R90 (Y UltraVISTA)", sep = ''), cex.main = 2.5)
+      magimage(seg$sky, xlab = "x/pix", ylab = "y/pix",
+               cex.lab = 3,
+               cex.axis = 3,
+               mgp = c(2.5,1.5,0),
+               mtline = 5)
+      title(main = "sky", cex.main = 2.5)
+      profoundSkyEst(image = image, objects = seg$objects_redo, plot = TRUE, xlab = "sky pix Val",
+                     cex.lab = 2,
+                     cex.axis = 2,
+                     mgp = c(2.5,1.5,0),
+                     mtline = 5)
+      title(main = "sky pix val distribution", cex.main = 2.5)
     dev.off()
 
     log3 = " Image cutout:: DONE :D "

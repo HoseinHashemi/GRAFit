@@ -32,7 +32,7 @@ GRAFitLD <- function( output_dir = output_dir, GRAFitlib = GRAFitlib, Model = pr
 
   # LDfit = AllStarFit::convergeFit(Data)      # from AllStarFit package by Dan Taranu.
 
-  png(file = paste(output_dir,'LD_post.png',sep = "/"),width=30,height=30,units="in", res = 80)
+  png(file = paste(output_dir,'LD_post.png',sep = "/"), width = 30, height = 30, units = "in", res = 80)
     BestLD = GRAFitri(LDfit$Posterior1, samples = 1000, samptype = 'end')
   dev.off()
 
@@ -40,13 +40,13 @@ GRAFitLD <- function( output_dir = output_dir, GRAFitlib = GRAFitlib, Model = pr
     profitLikeModel( BestLD[,1], Data, makeplots = TRUE, whichcomponents = list(sersic = 'all'))
   dev.off()
 
-  png(file = paste(output_dir,'LD_chisq.png',sep = "/"), width = 10, height = 7, units="in", res = 200)
+  png(file = paste(output_dir,'LD_chisq.png',sep = "/"), width = 9.5, height = 6, units="in", res = 200)
     profitLikeModel( BestLD[,1], Data, makeplots = TRUE, whichcomponents = list(sersic='all'), plotchisq = T)
   dev.off()
 
   modelLD = profitRemakeModellist( BestLD[,1], Data$modellist, Data$tofit, Data$tolog )$modellist
 
-    png(file = paste(output_dir,'/LD_1D_profile.png', sep = ''), width = 10, height = 7, units = "in", res = 200)
+    png(file = paste(output_dir,'/LD_1D_profile.png', sep = ''), width = 8, height = 5, units = "in", res = 200)
       if (nComp == 1){
         fakemodellist = GRAFitAddFakeBulge( model =  modelLD,
                                             zeropoint = zeropoint )
