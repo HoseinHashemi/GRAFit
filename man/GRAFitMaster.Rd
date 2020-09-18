@@ -88,7 +88,7 @@ GRAFit's output is a structural catalogue (catalog_name.csv) as well as a folder
 This code is considered as the core code of the GRAFit that connects all other parts and calls modules where needed.
 }
 \examples{
-GRAFitMaster(wrk_dir = '~/Desktop/wrk_dir/', data_dir = '~/Desktop/data_dir/', PSF_dir = '~/Desktop/PSF_dir/', threadMode = 0, ncores = 1, nComp= 2, optimMode = 'MCMC', object_list = c(103513757))
+GRAFitMaster(wrk_dir = '~/Desktop/wrk_dir/', data_dir = '~/Desktop/data_dir/', PSF_dir = '~/Desktop/PSF_dir/', threadMode = 0, ncores = 1, nComp= 2, optimMode = 'MCMC', object_list = 'object_list')
 }
 \seealso{
 \code{\link[GRAFit]{GRAFitDynamo_v2}}

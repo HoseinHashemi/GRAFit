@@ -20,7 +20,7 @@ GRAFitDynamo_v2(
   tolerance = 7,
   smooth = TRUE,
   sigma = 7,
-  sky,
+  sky = NULL,
   pixcut = 3,
   skycut = 1.1,
   boundstats = TRUE,
