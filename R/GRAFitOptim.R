@@ -22,7 +22,7 @@ GRAFitOptim <- function( output_dir = output_dir, GRAFitlib = GRAFitlib, Model =
 
   if( verbose ) cat("Running optimfit ......", '\n')
 
-  optimfit = optim(par = Data$init, Model, method = Algorithm,
+  optimfit = optim(par = Data$init, fn = Model, method = Algorithm,
                    Data = Data, control = list(fnscale = -1)) #,parscale=sigmas[which(unlist(tofit))]   method='L-BFGS-B'
 
   modeloptim = profitRemakeModellist(parm = optimfit$par, Data = Data)$modellist

@@ -42,6 +42,7 @@
 GRAFitMaster <- function( wrk_dir = NULL, data_dir = NULL, GRAFitlib = NULL, PSF_dir = NULL, object_list = NULL,
                          threadMode = c(0,1) , ncores = 1, logfile = "logfile.txt",
                          nComp = 2, optimMode = "MCMC", LA_iteration = 1e3,
+                         Optim_algo = 'BFGS', MCM_algo = "CHARM",
                          MCMC_iteration = 1e4, ExpDisk = FALSE,
                          FreeBulge = FALSE, BulgeFreeness = 11, Single_PSF = FALSE, PSF_diameter = 1,
                          like.func = "t", catalog_name = 'MasterCat.csv', keep_wrk_space = FALSE,
@@ -386,7 +387,7 @@ print("Doing model setup")
         optim = GRAFitOptim( output_dir = output_dir, GRAFitlib = GRAFitlib,
                              Model = profitLikeModel, Data = Data, verbose = verbose,
                              nComp = nComp, pixscale = pix_scale, FWHM = 0.09,
-                             SBlim = 26, zeropoint = ZP )
+                             SBlim = 26, zeropoint = ZP, Algorithm = Optim_algo )
 
         optimfit <- optim$optimfit
         modeloptim <- optim$modeloptim
@@ -463,7 +464,7 @@ print("Doing model setup")
         error = "ERROR in: LD"
         LD = GRAFitLD( output_dir = output_dir, GRAFitlib = GRAFitlib, Model = profitLikeModel, Initial.Values = LD_InitVal,
                   Data = Data, iteration = MCMC_iteration, verbose = verbose, nComp = nComp, zeropoint = ZP,
-                  pixscale = pix_scale, FWHM = 0.09, SBlim = 26  )
+                  pixscale = pix_scale, FWHM = 0.09, SBlim = 26, Algorithm = MCMC_algo  )
 
         LDfit <- LD$LDfit
         modelLD <- LD$modelLD

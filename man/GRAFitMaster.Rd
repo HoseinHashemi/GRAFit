@@ -16,6 +16,8 @@ GRAFitMaster(
   nComp = 2,
   optimMode = "MCMC",
   LA_iteration = 1000,
+  Optim_algo = "BFGS",
+  MCM_algo = "CHARM",
   MCMC_iteration = 10000,
   ExpDisk = FALSE,
   FreeBulge = FALSE,
