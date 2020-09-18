@@ -12,7 +12,7 @@
 #' @param optimMode The optimization mode. Default = 'MCMC'; using \code{LaplacesDemon} package. Alternatives for this argument is: 'LA' that uses \code{Laplace Approximation} and 'optim' that uses \code{optim} optimization.
 #' @param LA_iteration The iterations for \code{Laplace Approximation} optimization if optimMode = 'LA'. Default = 1000
 #' @param Optim_algo The algorithm to be used in \code{optim} optimization. Default = \code{"BFGS"}. Available algorithms are: \code{c("Nelder-Mead", "BFGS", "CG", "L-BFGS-B", "SANN","Brent")}
-#' @param MCMC_algo The MCMC algorithm to be used in \code{Laplaces Demon}. Default = \code{"CHARM"}. See the documentation for \code{\link[LaplacesDemon]{LaplacesDemon}} for all algorithms available.
+#' @param MCMC_algo The MCMC algorithm to be used in \code{Laplaces Demon}. Default = \code{"CHARM"}. See the \code{\link[LaplacesDemon]{LaplacesDemon}} documentation for all available algorithms.
 #' @param MCMC_iteration The iterations for \code{MCMC} optimization if optimMode = 'MCMC'. Default = 10000
 #' @param ExpDisk Logical; Should the disk be fitted with a pure exponential profile (\code{Sersic index = 1}). Default = \code{FALSE}; for a free Sersic profile.
 #' @param FreeBulge Logical; Should the bulge location (\code{x \& y}) also be fitted by GRAFit. Default = \code{FALSE}, i.e. the bulge position will be fixed to the disk position.

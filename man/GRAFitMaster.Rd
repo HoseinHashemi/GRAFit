@@ -57,7 +57,7 @@ GRAFitMaster(
 
 \item{Optim_algo}{The algorithm to be used in \code{optim} optimization. Default = \code{"BFGS"}. Available algorithms are: \code{c("Nelder-Mead", "BFGS", "CG", "L-BFGS-B", "SANN","Brent")}}
 
-\item{MCMC_algo}{The MCMC algorithm to be used in \code{Laplaces Demon}. Default = \code{"CHARM"}. See the documentation for \code{\link[LaplacesDemon]{LaplacesDemon}} for all algorithms available.}
+\item{MCMC_algo}{The MCMC algorithm to be used in \code{Laplaces Demon}. Default = \code{"CHARM"}. See the \code{\link[LaplacesDemon]{LaplacesDemon}} documentation for all available algorithms.}
 
 \item{MCMC_iteration}{The iterations for \code{MCMC} optimization if optimMode = 'MCMC'. Default = 10000}
 
