@@ -19,5 +19,7 @@ Imports: astro,
     magicaxis,
     LaplacesDemon,
     RColorBrewer,
-    Cairo
+    Cairo,
+    doSNOW,
+    data.table
 RoxygenNote: 7.1.1

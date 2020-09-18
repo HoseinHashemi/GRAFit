@@ -29,7 +29,7 @@
 #' @author Hosein Hashemizadeh
 #' @seealso \code{\link[GRAFit]{GRAFitDynamo_v2}}
 #' @examples
-#' GRAFitMaster(wrk_dir = '~/Desktop/wrk_dir/', data_dir = '~/Desktop/data_dir/', PSF_dir = '~/Desktop/PSF_dir/', threadMode = 0, ncores = 1, nComp= 2, optimMode = 'MCMC', object_list = c(103513757))
+#' GRAFitMaster(wrk_dir = '~/Desktop/wrk_dir/', data_dir = '~/Desktop/data_dir/', PSF_dir = '~/Desktop/PSF_dir/', threadMode = 0, ncores = 1, nComp= 2, optimMode = 'MCMC', object_list = 'object_list')
 #' @export
 
 # devtools::install_github("renkun-ken/formattable")
@@ -57,13 +57,10 @@ GRAFitMaster <- function( wrk_dir = NULL, data_dir = NULL, GRAFitlib = NULL, PSF
   out_catalog = paste(wrk_dir,'/',catalog_name,sep = "")
   system(paste('mkdir ', wrk_dir,'/WrkSp', sep=''))
   WrkSp_dir = paste(wrk_dir,'/WrkSp', sep='')
-  library(foreach)
-  library(doParallel)
 
   if (threadMode == 0) { # on pc, laptop or local clusters like MUNRO.
     registerDoParallel(cores = ncores)     # snow-like funtionality.
   } else if (threadMode == 1) { # using Rmpi on big clusters like Raijin or MAGNUS.
-    library(doSNOW)
     registerDoSNOW(makeCluster(ncores))
   }
 
@@ -306,7 +303,7 @@ GRAFitMaster <- function( wrk_dir = NULL, data_dir = NULL, GRAFitlib = NULL, PSF
         } else EBV = 0
       } else EBV = 0
 
-    if ( !file.exists(paste(output_dir,"/","PSF.fits",sep = "")) & !file.exists(paste(PSF_dir, object_list$D10CATAID[j],"_PSF.fits",sep = "")) ) {
+    if ( !file.exists(paste(wrk_dir,"/","PSF.fits",sep = "")) & !file.exists(paste(PSF_dir, object_list$D10CATAID[j],"_PSF.fits",sep = "")) ) {
       if (Single_PSF) {
         error = "ERROR in: old PSF generation."
         PSF_name = "psf_1"
@@ -362,6 +359,9 @@ GRAFitMaster <- function( wrk_dir = NULL, data_dir = NULL, GRAFitlib = NULL, PSF
       cat("PSF provided. It will be used! :D", '\n'); log6=" PSF :: DONE :D "
     } else if ( file.exists(paste(PSF_dir, object_list$D10CATAID[j],"_PSF.fits",sep = "")) ) {
       finalPSF <- readFITS(file = paste(PSF_dir, object_list$D10CATAID[j],"_PSF.fits", sep = ""))$imDat
+      cat("PSF provided. It will be used! :D", '\n'); log6=" PSF :: DONE :D "
+    } else if ( file.exists(paste(wrk_dir, "PSF.fits",sep = "")) ) {
+      finalPSF <- readFITS(file = paste(wrk_dir, "PSF.fits",sep = ""))$imDat
       cat("PSF provided. It will be used! :D", '\n'); log6=" PSF :: DONE :D "
     }
 
