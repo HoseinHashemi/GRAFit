@@ -17,7 +17,7 @@ GRAFitMaster(
   optimMode = "MCMC",
   LA_iteration = 1000,
   Optim_algo = "BFGS",
-  MCM_algo = "CHARM",
+  MCMC_algo = "CHARM",
   MCMC_iteration = 10000,
   ExpDisk = FALSE,
   FreeBulge = FALSE,
@@ -54,6 +54,10 @@ GRAFitMaster(
 \item{optimMode}{The optimization mode. Default = 'MCMC'; using \code{LaplacesDemon} package. Alternatives for this argument is: 'LA' that uses \code{Laplace Approximation} and 'optim' that uses \code{optim} optimization.}
 
 \item{LA_iteration}{The iterations for \code{Laplace Approximation} optimization if optimMode = 'LA'. Default = 1000}
+
+\item{Optim_algo}{The algorithm to be used in \code{optim} optimization. Default = \code{"BFGS"}. Available algorithms are: \code{c("Nelder-Mead", "BFGS", "CG", "L-BFGS-B", "SANN","Brent")}}
+
+\item{MCMC_algo}{The MCMC algorithm to be used in \code{Laplaces Demon}. Default = \code{"CHARM"}. See the documentation for \code{\link[LaplacesDemon]{LaplacesDemon}} for all algorithms available.}
 
 \item{MCMC_iteration}{The iterations for \code{MCMC} optimization if optimMode = 'MCMC'. Default = 10000}
 

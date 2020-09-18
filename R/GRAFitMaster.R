@@ -11,6 +11,8 @@
 #' @param nComp Number of components to be used in fitting. Default = 2 for a bulge+disk model. Alternatively could be 1 for a single Sersic model.
 #' @param optimMode The optimization mode. Default = 'MCMC'; using \code{LaplacesDemon} package. Alternatives for this argument is: 'LA' that uses \code{Laplace Approximation} and 'optim' that uses \code{optim} optimization.
 #' @param LA_iteration The iterations for \code{Laplace Approximation} optimization if optimMode = 'LA'. Default = 1000
+#' @param Optim_algo The algorithm to be used in \code{optim} optimization. Default = \code{"BFGS"}. Available algorithms are: \code{c("Nelder-Mead", "BFGS", "CG", "L-BFGS-B", "SANN","Brent")}
+#' @param MCMC_algo The MCMC algorithm to be used in \code{Laplaces Demon}. Default = \code{"CHARM"}. See the documentation for \code{\link[LaplacesDemon]{LaplacesDemon}} for all algorithms available.
 #' @param MCMC_iteration The iterations for \code{MCMC} optimization if optimMode = 'MCMC'. Default = 10000
 #' @param ExpDisk Logical; Should the disk be fitted with a pure exponential profile (\code{Sersic index = 1}). Default = \code{FALSE}; for a free Sersic profile.
 #' @param FreeBulge Logical; Should the bulge location (\code{x \& y}) also be fitted by GRAFit. Default = \code{FALSE}, i.e. the bulge position will be fixed to the disk position.
@@ -42,7 +44,7 @@
 GRAFitMaster <- function( wrk_dir = NULL, data_dir = NULL, GRAFitlib = NULL, PSF_dir = NULL, object_list = NULL,
                          threadMode = c(0,1) , ncores = 1, logfile = "logfile.txt",
                          nComp = 2, optimMode = "MCMC", LA_iteration = 1e3,
-                         Optim_algo = 'BFGS', MCM_algo = "CHARM",
+                         Optim_algo = 'BFGS', MCMC_algo = "CHARM",
                          MCMC_iteration = 1e4, ExpDisk = FALSE,
                          FreeBulge = FALSE, BulgeFreeness = 11, Single_PSF = FALSE, PSF_diameter = 1,
                          like.func = "t", catalog_name = 'MasterCat.csv', keep_wrk_space = FALSE,
