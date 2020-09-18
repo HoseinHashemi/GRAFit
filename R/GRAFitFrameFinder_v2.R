@@ -46,7 +46,7 @@ GRAFitFrameFinder_v2 <- function(GRAFitlib = GRAFitlib,
   # # frame_im_name = file_names[which.min(ang_sep)]
   # frame_im_name = paste(data_dir,"/",FrameRefCor[which.min(ang_sep),3],sep = "")
 
-  frameMatch = coordmatchsing(RAref = target_loc[1], Decref = target_loc[2],
+  frameMatch = celestial::coordmatchsing(RAref = target_loc[1], Decref = target_loc[2],
                               coordcompare =  FrameRefCor[,1:2],  rad = 1, radunit = "deg")
 
   # frame_im_name = paste(data_dir,"/",FrameRefCor[frameMatch$bestmatch[1],3],sep = "")
