@@ -18,7 +18,8 @@ Depends:
     celestial,
     magicaxis,
     LaplacesDemon,
-    FITSio
+    FITSio,
+    EBImage
 Imports: astro,
     doParallel,
     knitr,

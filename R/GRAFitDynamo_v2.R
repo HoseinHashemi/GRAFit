@@ -78,17 +78,28 @@ GRAFitDynamo_v2 <- function( im = NULL, loc = c(ra_deg, dec_deg), init_xrad = NU
   # mask = matrix(0, dim(image)[1], dim(image)[1]); mask[which(image == 0)] = 1
   box_car = round(5*R90/pix_scale)
 
+  if((box_car %% 2) != 0) {
+    box_car = box_car-1
+  }
+
   print("----- profound")
   print(paste("box = ", box_car, "R90 = ", R90))
 
-  seg <- profoundProFound( image = image, tolerance = tolerance,
-                           sigma = sigma, sky = sky,      # mask = image==0,
-                           smooth = smooth , pixcut = pixcut,
-                           skycut = skycut, magzero = magzero,
+  seg <- profoundProFound( image = image,
+                           tolerance = tolerance,
+                           sigma = sigma,
+                           sky = sky,      # mask = image==0,
+                           smooth = smooth,
+                           pixcut = pixcut,
+                           skycut = skycut,
+                           magzero = magzero,
                            pixscale = pix_scale,
-                           box = c(box_car,box_car), type = "bicubic",
-                           header = header, boundstats = boundstats,
-                           groupstats = FALSE, rotstats = rotstats,
+                           box = c(box_car,box_car),
+                           type = "bicubic",
+                           header = header,
+                           boundstats = boundstats,
+                           groupstats = FALSE,
+                           rotstats = rotstats,
                            plot = FALSE, ... )  #gain = gain_ADU
 
   segstats <- seg$segstats
