@@ -23,9 +23,22 @@
 #' @examples -
 #' @export
 
-GRAFitPSFgenerator <- function(wrk_dir = wrk_dir, GRAFitlib = GRAFitlib, output_dir = output_dir, HST_Focus_val_file = NULL,
-                               PSF_name = "psf", target_loc, loc_Unit = c("xy","deg"), CCDCHIP, filter = "f814w", EXPSTART, jitter = 3,
-                               header = NULL, ebmv = 0, SUB = 1, PSF_diameter = 1, down_sample_factor, verbose = TRUE ) {
+GRAFitPSFgenerator <- function(wrk_dir = wrk_dir,
+                               output_dir = output_dir,
+                               HST_Focus_val_file = NULL,
+                               PSF_name = "psf",
+                               target_loc,
+                               loc_Unit = c("xy","deg"),
+                               CCDCHIP,
+                               filter = "f814w",
+                               EXPSTART,
+                               jitter = 3,
+                               header = NULL,
+                               ebmv = 0,
+                               SUB = 1,
+                               PSF_diameter = 1,
+                               down_sample_factor,
+                               verbose = TRUE ) {
 
 
   if (missing(CCDCHIP)) CCDCHIP= as.numeric( header[which(header == "CCDCHIP")+1] )

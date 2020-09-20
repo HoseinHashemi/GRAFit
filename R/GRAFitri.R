@@ -15,7 +15,11 @@
 #' GRAFitri(chains,tick = TRUE)
 #' @export
 
-GRAFitri <- function (chains, samples, samptype = "end", grid = FALSE, tick = FALSE)
+GRAFitri <- function (chains,
+                      samples,
+                      samptype = "end",
+                      grid = FALSE,
+                      tick = FALSE)
 {
 
   chains = as.data.frame(chains)

@@ -22,10 +22,19 @@
 #' @examples -
 #' @export
 
-GRAFitSBprofile <- function(image = image, main_source = main_src, model = NULL, segim = segim,
-                            comp = c("bd","b","d"), centerPos = c(optim_xcen1,optim_ycen1),
-                            pixel_scale = 0.03, zeropoint = NULL, plot = TRUE,
-                            modelPlot = TRUE, title = NULL, col = NULL, legend = TRUE,
+GRAFitSBprofile <- function(image = image,
+                            main_source = main_src,
+                            model = NULL,
+                            segim = segim,
+                            comp = c("bd","b","d"),
+                            centerPos = c(optim_xcen1,optim_ycen1),
+                            pixel_scale = 0.03,
+                            zeropoint = NULL,
+                            plot = TRUE,
+                            modelPlot = TRUE,
+                            title = NULL,
+                            col = NULL,
+                            legend = TRUE,
                             legend_lab = c("Data", "Model+Noise", "Bulge", "Disk"),
                             legend_col = c('grey', 'green', 'red', 'blue')) {
 

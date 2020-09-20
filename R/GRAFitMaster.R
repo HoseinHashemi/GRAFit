@@ -41,15 +41,32 @@
 # source("http://bioconductor.org/biocLite.R")
 # biocLite("EBImage")
 
-GRAFitMaster <- function( wrk_dir = NULL, data_dir = NULL, GRAFitlib = NULL, PSF_dir = NULL, object_list = NULL,
-                         threadMode = c(0,1) , ncores = 1, logfile = "logfile.txt",
-                         nComp = 2, optimMode = "MCMC", LA_iteration = 1e3,
-                         Optim_algo = 'BFGS', MCMC_algo = "CHARM",
-                         MCMC_iteration = 1e4, ExpDisk = FALSE,
-                         FreeBulge = FALSE, BulgeFreeness = 11, Single_PSF = FALSE, PSF_diameter = 1,
-                         like.func = "t", catalog_name = 'MasterCat.csv', keep_wrk_space = FALSE,
-                         verbose = TRUE, plot = FALSE, add_hdr = TRUE,
-                         DoPriors = TRUE, DoConstraits = TRUE) {
+GRAFitMaster <- function( wrk_dir = NULL,
+                          data_dir = NULL,
+                          PSF_dir = NULL,
+                          object_list = NULL,
+                          threadMode = c(0,1),
+                          ncores = 1,
+                          logfile = "logfile.txt",
+                          nComp = 2,
+                          optimMode = "MCMC",
+                          LA_iteration = 1e3,
+                          Optim_algo = 'BFGS',
+                          MCMC_algo = "CHARM",
+                          MCMC_iteration = 1e4,
+                          ExpDisk = FALSE,
+                          FreeBulge = FALSE,
+                          BulgeFreeness = 11,
+                          Single_PSF = FALSE,
+                          PSF_diameter = 1,
+                          like.func = "t",
+                          catalog_name = 'MasterCat.csv',
+                          keep_wrk_space = FALSE,
+                          verbose = TRUE,
+                          plot = FALSE,
+                          add_hdr = TRUE,
+                          DoPriors = TRUE,
+                          DoConstraits = TRUE) {
 
   options(digits=10)
 

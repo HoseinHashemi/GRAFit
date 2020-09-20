@@ -28,12 +28,28 @@
 #' @examples -
 #' @export
 
-GRAFitDynamo_v2 <- function( im = NULL, loc = c(ra_deg, dec_deg), init_xrad = NULL, init_yrad = NULL,
-                             R90 = NULL, finalCut = 5, finalBoxCar = 3,
-                             GRAFitlib = GRAFitlib, header = NULL, pix_scale = NULL, verbose = TRUE,
-                             magzero = NULL, tolerance = 7, smooth = TRUE, sigma = 7,
-                             sky = NULL, pixcut = 3, skycut = 1.1, boundstats = TRUE, rotstats = TRUE,
-                             ImPlot = TRUE, output_dir = NULL, ... ) {
+GRAFitDynamo_v2 <- function( im = NULL,
+                             loc = c(ra_deg, dec_deg),
+                             init_xrad = NULL,
+                             init_yrad = NULL,
+                             R90 = NULL,
+                             finalCut = 5,
+                             finalBoxCar = 3,
+                             header = NULL,
+                             pix_scale = NULL,
+                             magzero = NULL,
+                             tolerance = 7,
+                             smooth = TRUE,
+                             sigma = 7,
+                             sky = NULL,
+                             pixcut = 3,
+                             skycut = 1.1,
+                             boundstats = TRUE,
+                             rotstats = TRUE,
+                             ImPlot = TRUE,
+                             output_dir = NULL,
+                             verbose = TRUE,
+                             ... ) {
 
   if(verbose) cat( paste( "*** Doing Dynamic cut-out ", sep = "" ),'\n' )
 

@@ -26,11 +26,24 @@
 #' @export
 
 
-GRAFitInitModelSetupConst <- function( output_dir = NULL, GRAFitlib = GRAFitlib, main_src = NULL, nComp = 2,
-                                  ExpDisk = FALSE, FreeBulge = FALSE, BulgeFreeness = 11, BT_flux_ratio = 0.2,
-                                  ZP = NULL, image = image, mask = mask, sigma = sigma, pix_scale = pix_scale,
-                                  segim = segim, psf = psf, SBlim = SBlim, like.func = "t",
-                                  DoPriors = TRUE, DoConstraits = TRUE )  {
+GRAFitInitModelSetupConst <- function( output_dir = NULL,
+                                       main_src = NULL,
+                                       nComp = 2,
+                                       ExpDisk = FALSE,
+                                       FreeBulge = FALSE,
+                                       BulgeFreeness = 11,
+                                       BT_flux_ratio = 0.2,
+                                       ZP = NULL,
+                                       image = image,
+                                       mask = mask,
+                                       sigma = sigma,
+                                       pix_scale = pix_scale,
+                                       segim = segim,
+                                       psf = psf,
+                                       SBlim = SBlim,
+                                       like.func = "t",
+                                       DoPriors = TRUE,
+                                       DoConstraits = TRUE )  {
 
   if (missing(output_dir)) output_dir = getwd()
 

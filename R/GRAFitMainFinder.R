@@ -10,7 +10,10 @@
 #' @examples -
 #' @export
 
-GRAFitMainFinder = function(src_list = NULL, imDim = NULL, main_pin = FALSE) {
+GRAFitMainFinder = function(src_list = NULL,
+                            imDim = NULL,
+                            main_pin = FALSE) {
+
   nSrc = length(src_list$segID) # number of detected sources.
 
   x0 = imDim[1]/2; y0 = imDim[2]/2 # position of cut-out centre.

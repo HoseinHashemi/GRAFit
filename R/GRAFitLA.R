@@ -13,8 +13,12 @@
 #' @examples -
 #' @export
 
-GRAFitLA <- function( Model = profitLikeModel, Initial.Values = Data$init, Data = Data,
-                      iteration = 1e3, Method = 'LM', verbose = TRUE ) {
+GRAFitLA <- function( Model = profitLikeModel,
+                      Initial.Values = Data$init,
+                      Data = Data,
+                      iteration = 1e3,
+                      Method = 'LM',
+                      verbose = TRUE ) {
 
   if ( verbose ) cat("Running Laplace Approximation ......", '\n')
   #       pdf(file = paste(output_dir,'/LAfit.pdf',sep = ""), width = 10, height = 8)

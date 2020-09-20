@@ -30,8 +30,13 @@
 #' @export
 #'
 
-GRAFitcutout <- function (image, loc = dim(image)/2, box = c(100, 100), shiftloc = FALSE,
-          paddim = TRUE, padVal = 0, plot = FALSE, ...)
+GRAFitcutout <- function (image,
+                          loc = dim(image)/2,
+                          box = c(100, 100),
+                          shiftloc = FALSE,
+                          paddim = TRUE,
+                          padVal = 0,
+                          plot = FALSE, ...)
 {
   loc = as.numeric(loc)
   xcen = loc[1]

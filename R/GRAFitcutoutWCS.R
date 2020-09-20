@@ -29,10 +29,25 @@
 #' @examples -
 #' @export
 
-GRAFitcutoutWCS <- function ( GRAFitlib_path = GRAFitlib, image, header, loc, box = c(100, 100), shiftloc = FALSE,
-          paddim = TRUE, padVal = 0, plot = FALSE, CRVAL1 = 0, CRVAL2 = 0, CRPIX1 = 0,
-          CRPIX2 = 0, CD1_1 = 1, CD1_2 = 0, CD2_1 = 0, CD2_2 = 1, coord.type = "deg",
-          sep = ":", loc.type = c("coord", "coord"), ...)
+GRAFitcutoutWCS <- function ( image,
+                              header,
+                              loc,
+                              box = c(100, 100),
+                              shiftloc = FALSE,
+                              paddim = TRUE,
+                              padVal = 0,
+                              plot = FALSE,
+                              CRVAL1 = 0,
+                              CRVAL2 = 0,
+                              CRPIX1 = 0,
+                              CRPIX2 = 0,
+                              CD1_1 = 1,
+                              CD1_2 = 0,
+                              CD2_1 = 0,
+                              CD2_2 = 1,
+                              coord.type = "deg",
+                              sep = ":",
+                              loc.type = c("coord", "coord"), ...)
 {
 
   if (length(loc.type) == 1) {

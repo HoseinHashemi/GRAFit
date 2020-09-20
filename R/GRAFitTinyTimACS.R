@@ -18,7 +18,18 @@
 #' @examples -
 #' @export
 
-GRAFitTinyTimACS <- function(wrk_dir = NULL, output_dir = NULL, name, CCDCHIP, x, y, filter = "f814w", focus, ebmv = 0, jitter = 3, PSF_diameter = 1, SUB = 1){
+GRAFitTinyTimACS <- function(wrk_dir = NULL,
+                             output_dir = NULL,
+                             name,
+                             CCDCHIP,
+                             x,
+                             y,
+                             filter = "f814w",
+                             focus,
+                             ebmv = 0,
+                             jitter = 3,
+                             PSF_diameter = 1,
+                             SUB = 1){
 
   setwd(output_dir)
   psf_runfile <- paste(output_dir,'/',name,'_run',sep='')

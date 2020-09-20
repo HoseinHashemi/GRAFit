@@ -10,8 +10,7 @@
 #' @examples -
 #' @export
 
-GRAFitFrameFinder_v2 <- function(GRAFitlib = GRAFitlib,
-                                 data_dir = NULL,
+GRAFitFrameFinder_v2 <- function(data_dir = NULL,
                                  target_loc = NULL,
                                  FrameType = "driz") {
 

@@ -19,9 +19,19 @@
 #' @examples -
 #' @export
 
-GRAFitLD <- function( output_dir = output_dir, GRAFitlib = GRAFitlib, Model = profitLikeModel, nComp = 2,
-                      Initial.Values = NULL, Data = Data, iteration = 1e4, zeropoint = ZP, pixscale = 0.03,
-                      FWHM = 0.09, SBlim = 26, Algorithm = 'CHARM', verbose = TRUE, ... ) {
+GRAFitLD <- function( output_dir = output_dir,
+                      Model = profitLikeModel,
+                      nComp = 2,
+                      Initial.Values = NULL,
+                      Data = Data,
+                      iteration = 1e4,
+                      zeropoint = ZP,
+                      pixscale = 0.03,
+                      FWHM = 0.09,
+                      SBlim = 26,
+                      Algorithm = 'CHARM',
+                      verbose = TRUE,
+                      ... ) {
 
   if( verbose ) cat("*** Performing FULL MCMC: Laplaces Demon ......", '\n')
 

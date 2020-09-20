@@ -16,9 +16,15 @@
 #' @examples -
 #' @export
 
-GRAFitOptim <- function( output_dir = output_dir, GRAFitlib = GRAFitlib, Model = profitLikeModel, nComp = 2,
-                      Initial.Values = NULL, Data = Data, Algorithm = 'BFGS', zeropoint = ZP,
-                      verbose = TRUE, ... ) {
+GRAFitOptim <- function( output_dir = output_dir,
+                         Model = profitLikeModel,
+                         nComp = 2,
+                         Initial.Values = NULL,
+                         Data = Data,
+                         Algorithm = 'BFGS',
+                         zeropoint = ZP,
+                         verbose = TRUE,
+                         ... ) {
 
   if( verbose ) cat("Running optimfit ......", '\n')
 
