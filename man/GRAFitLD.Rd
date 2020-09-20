@@ -6,7 +6,6 @@
 \usage{
 GRAFitLD(
   output_dir = output_dir,
-  GRAFitlib = GRAFitlib,
   Model = profitLikeModel,
   nComp = 2,
   Initial.Values = NULL,

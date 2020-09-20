@@ -15,8 +15,7 @@ GRAFitEllipsePlot(
   df = 100,
   raw = FALSE,
   plot = TRUE,
-  main_src = NULL,
-  GRAFitlib = GRAFitlib
+  main_src = NULL
 )
 }
 \arguments{

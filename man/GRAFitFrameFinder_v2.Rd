@@ -4,12 +4,7 @@
 \alias{GRAFitFrameFinder_v2}
 \title{GRAFit: Find the frame within which the galaxy is located}
 \usage{
-GRAFitFrameFinder_v2(
-  GRAFitlib = GRAFitlib,
-  data_dir = NULL,
-  target_loc = NULL,
-  FrameType = "driz"
-)
+GRAFitFrameFinder_v2(data_dir = NULL, target_loc = NULL, FrameType = "driz")
 }
 \arguments{
 \item{data_dir}{The directory where the imaging data (frames) is stored.}

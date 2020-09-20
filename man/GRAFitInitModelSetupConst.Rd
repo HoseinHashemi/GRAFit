@@ -6,7 +6,6 @@
 \usage{
 GRAFitInitModelSetupConst(
   output_dir = NULL,
-  GRAFitlib = GRAFitlib,
   main_src = NULL,
   nComp = 2,
   ExpDisk = FALSE,

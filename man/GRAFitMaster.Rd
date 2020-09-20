@@ -7,7 +7,6 @@
 GRAFitMaster(
   wrk_dir = NULL,
   data_dir = NULL,
-  GRAFitlib = NULL,
   PSF_dir = NULL,
   object_list = NULL,
   threadMode = c(0, 1),

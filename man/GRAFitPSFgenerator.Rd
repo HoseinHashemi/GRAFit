@@ -6,7 +6,6 @@
 \usage{
 GRAFitPSFgenerator(
   wrk_dir = wrk_dir,
-  GRAFitlib = GRAFitlib,
   output_dir = output_dir,
   HST_Focus_val_file = NULL,
   PSF_name = "psf",

@@ -5,7 +5,6 @@
 \title{GRAFit: Image CutoutWCS}
 \usage{
 GRAFitcutoutWCS(
-  GRAFitlib_path = GRAFitlib,
   image,
   header,
   loc,

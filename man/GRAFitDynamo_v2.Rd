@@ -12,10 +12,8 @@ GRAFitDynamo_v2(
   R90 = NULL,
   finalCut = 5,
   finalBoxCar = 3,
-  GRAFitlib = GRAFitlib,
   header = NULL,
   pix_scale = NULL,
-  verbose = TRUE,
   magzero = NULL,
   tolerance = 7,
   smooth = TRUE,
@@ -27,6 +25,7 @@ GRAFitDynamo_v2(
   rotstats = TRUE,
   ImPlot = TRUE,
   output_dir = NULL,
+  verbose = TRUE,
   ...
 )
 }
@@ -46,8 +45,6 @@ GRAFitDynamo_v2(
 \item{header}{Full FITS header in table or vector format.}
 
 \item{pix_scale}{Pixel scale in units of arcsecond/pixel.}
-
-\item{verbose}{verbose.}
 
 \item{magzero}{Numeric scalar; the magnitude zero point.}
 
@@ -70,6 +67,8 @@ GRAFitDynamo_v2(
 \item{ImPlot}{Logical; should the image be plotted?}
 
 \item{output_dir}{The directory to save outputs.}
+
+\item{verbose}{verbose.}
 }
 \value{
 Plots as well we matrices of the image, segmentation, sky etc.
