@@ -19,12 +19,13 @@ Depends:
     magicaxis,
     LaplacesDemon,
     FITSio,
-    EBImage
-Imports: astro,
+    EBImage,
+    data.table
+Imports: 
+    astro,
     doParallel,
     knitr,
     RColorBrewer,
     Cairo,
     doSNOW,
-    data.table
 RoxygenNote: 7.1.1
