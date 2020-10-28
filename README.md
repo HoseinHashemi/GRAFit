@@ -5,7 +5,7 @@ GRAFit (R package)
 
 <!-- badges: start -->
 <!-- badges: end -->
-**GRAFit** is an modular automatic pipeline for galaxy structural decomposition originally designed for the Hubble Space Telescope (HST) imaging data, the Advanced Camera for Surveys (ACS) in particular. However, it can be used for any standard astronomical imaging data. <!-- At it's core GRAFit uses ProFit galaxy fitting package. -->
+**GRAFit** is an automatic modular pipeline for galaxy structural decomposition (also known as bulge-disk decomposition) originally designed for the Hubble Space Telescope (HST) imaging data, the Advanced Camera for Surveys (ACS) in particular. However, it can be used for any standard astronomical imaging data. **GRAFit** is able to fit galaxies with different combination of models including double Sersic profile and single Sersic profile. <!-- At it's core GRAFit uses ProFit galaxy fitting package. -->
 
 Installation
 ------------
@@ -16,7 +16,7 @@ Get **R** for OSX (Mac), Linux and Windows from: <https://cloud.r-project.org>
 
 ### Install ProFit
 
-**GRAFit** uses **ProFit**, a Bayesian galaxy profile fitting tool.
+For fitting process **GRAFit** uses **ProFit**, a Bayesian galaxy profile fitting tool.
 
 Get **ProFit** with:
 
@@ -27,11 +27,11 @@ install_github("ICRAR/ProFit")
 library(ProFit)
 ```
 
-See [ProFit](https://github.com/ICRAR/ProFit) if you faced any issues with installing ProFit or it's dependencies.
+See [ProFit](https://github.com/ICRAR/ProFit) if you faced any issues with installation and/or dependencies.
 
 ### Install ProFound
 
-**GRAFit** uses **ProFound** for photometry and source extraction and generating segmentation map.
+Before we model a galaxy we need an approximate estimation of some photometrical parameters such as magnitude, central positions, position angle, etc. **GRAFit** will parse these values to **ProFit** as initial inputs of our model. **GRAFit** uses **ProFound** for photometry, source extraction and generating segmentation and mask maps.
 
 Get **ProFound** with:
 
@@ -42,13 +42,15 @@ library(ProFound)
 
 This should work properly, and the dependencies should be installed automatically.
 
-See [ProFound](https://github.com/asgr/ProFound) if you faced any issues with installing **ProFound**.
+See [ProFound](https://github.com/asgr/ProFound) if you faced any issues with installation.
 
 ### Install Tiny Tim
 
-**GRAFit** uses **Tiny Tim** for generating HST Point Spread Function (PSF).
+To simulate the optical effects on our model we need to convolve the with a Point Spread Function (PSF). **GRAFit** uses **Tiny Tim** for generating HST PSF.
 
 Get **Tiny Tim** from [here](https://www.stsci.edu/hst/instrumentation/focus-and-pointing/focus/tiny-tim-hst-psf-modeling)
+
+The user can also provide the PSF in their working directory or any other directories and provide the direction to them. This way **GRAFit** will prioretize the provided PSFs and will not generate new PSFs anymore.
 
 ### Install GRAFit
 
@@ -56,7 +58,7 @@ Get **Tiny Tim** from [here](https://www.stsci.edu/hst/instrumentation/focus-and
 <!-- ``` r -->
 <!-- install.packages("GRAFit") -->
 <!-- ``` -->
-You can install **GRAFit** from [GitHub](https://github.com/hoseinhashemi/GRAFit) with:
+You are now ready to install **GRAFit** from [GitHub](https://github.com/hoseinhashemi/GRAFit) with:
 
 ``` r
 devtools::install_github("hoseinhashemi/GRAFit")
@@ -81,7 +83,7 @@ BiocManager::install("EBImage")
 Example
 -------
 
-**GRAFit** is originally designed for a large number of galaxies distributed between one or more imaging frames, although there is no restriction for fitting one galaxy in a single cutout. In principle, you need to interact with only one **GRAFit** function; `GRAFitMaster`. This function calls all other modules and dependencies during fitting process.
+**GRAFit** is originally designed for a large number of galaxies distributed between one or more imaging frames, although there is no restriction for fitting one galaxy in a single cutout. In principle, you need to interact with only one **GRAFit** function; `GRAFitMaster`. This function calls all other modules and dependencies when/where it needs during the fitting process.
 
 You should provide: \* a working directory where the outputs will be saved.
 

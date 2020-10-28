@@ -113,7 +113,6 @@ GRAFitMaster <- function( wrk_dir = NULL,
       options(digits=10)
       assign("wrk_dir", wrk_dir, envir = .GlobalEnv)
       assign("data_dir", data_dir, envir = .GlobalEnv)
-      assign("GRAFitlib", GRAFitlib, envir = .GlobalEnv)
 
       error = " ERROR: in taking object list column info."
       # if (missing(object_list)) stop("No object list. You should provide a valid object list including at least RA & DEC")
