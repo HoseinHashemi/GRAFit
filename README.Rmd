@@ -99,6 +99,15 @@ install.packages("BiocManager")
 BiocManager::install("EBImage")
 ```
 
+### Modules
+
+**GRAFit** comes with a number of modules. For more details about each module and get the documentation for functions run the help operator in R environment with `?functionname` or `help(functionname)`. For example:
+
+```{r eval = FALSE}
+?GRAFitDynamo_v2
+help(GRAFitDynamo_v2)
+```
+
 
 ## Example
 
@@ -133,7 +142,7 @@ GRAFitMaster(wrk_dir = "~/Desktop/GRAFit_test_Run/",
 
 * Note that `object_list` should include at least the RA and DEC.
 
-This run uses a relatively simple `optim` optimizer to save you some time. More robust optimization that **GRAFit* provides is MCMC for which you need to specify optimMode = 'MCMC'. See `GRAFitMaster` documentation for more details and options. 
+This run uses a relatively simple `optim` optimizer to save you some time. More robust optimization that **GRAFit** provides is MCMC for which you need to specify optimMode = 'MCMC'. See `GRAFitMaster` documentation for more details and options. 
 
 This run will genrate a folder named with the galaxy ID (or RA/DEC if ID is not provided in inCat) containing all outputs associated with this galaxy such as figures of initial and optimized model, 1D profiles etc. In addition it will generate a master catalogue (MasterCat.csv) in you `wrk_dir` directory including all fitting parameters as well as a ProCat.csv including the results of photometric measurements by ProFound. Another directory could be also generated containing work spaces for which you need to specify `keep_wrk_space = TRUE`. 
 
