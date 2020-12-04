@@ -98,7 +98,8 @@ GRAFitMaster <- function( wrk_dir = NULL,
   if (!"LaplacesDemon" %in% rownames(installed.packages())) install.packages('LaplacesDemon', dependencies = T)
   if (!"RColorBrewer" %in% rownames(installed.packages())) install.packages('RColorBrewer', dependencies = T)
   if (!"Cairo" %in% rownames(installed.packages())) install.packages('Cairo', dependencies = T)
-  # if (!"AllStarFit" %in% rownames(installed.packages())) install_github("taranu/AllStarFit")
+  if (!"cmaeshpc" %in% rownames(installed.packages())) install_github('taranu/cmaeshpc')
+  if (!"AllStarFit" %in% rownames(installed.packages())) install_github("taranu/AllStarFit")
 
   ######################################
   ########## PREPARE INPUT FOR PROFIT ##########

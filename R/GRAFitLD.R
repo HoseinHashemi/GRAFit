@@ -37,10 +37,10 @@ GRAFitLD <- function( output_dir = output_dir,
 
   Data$algo.func="LD"   # if don't change the algorithm you'll get the ERROR: "Model must return a list.true"
   if ( is.null(Initial.Values) ) {Initial.Values = Data$init}
-  LDfit = LaplacesDemon(profitLikeModel, Initial.Values = Initial.Values, Data = Data, Status = 1000,
-                        Iterations = iteration, Algorithm = Algorithm, Thinning = 1, Specs = list(alpha.star = 0.44))  #c(rep(0,14))
+  # LDfit = LaplacesDemon(profitLikeModel, Initial.Values = Initial.Values, Data = Data, Status = 1000,
+  #                       Iterations = iteration, Algorithm = Algorithm, Thinning = 1, Specs = list(alpha.star = 0.44))  #c(rep(0,14))
 
-  # LDfit = AllStarFit::convergeFit(Data)      # from AllStarFit package by Dan Taranu.
+  LDfit = AllStarFit::convergeFit(Data)      # from AllStarFit package by Dan Taranu.
 
   png(file = paste(output_dir,'LD_post.png',sep = "/"), width = 30, height = 30, units = "in", res = 80)
     BestLD = GRAFitri(LDfit$Posterior1, samples = 1000, samptype = 'end')
