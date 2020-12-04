@@ -374,11 +374,11 @@ GRAFitMaster <- function( wrk_dir = NULL,
 
       if(verbose) cat(" PSF generated :D" ,'\n')
       log6=" PSF :: DONE :D "
-    } else if ( file.exists(paste(output_dir,"/","PSF.fits",sep = "")) ) {
-      finalPSF <- readFITS(file = paste(output_dir,"/","PSF.fits",sep = ""))$imDat
-      cat("PSF provided. It will be used! :D", '\n'); log6=" PSF :: DONE :D "
     } else if ( file.exists(paste(PSF_dir, object_list$D10CATAID[j],"_PSF.fits",sep = "")) ) {
       finalPSF <- readFITS(file = paste(PSF_dir, object_list$D10CATAID[j],"_PSF.fits", sep = ""))$imDat
+      cat("PSF provided. It will be used! :D", '\n'); log6=" PSF :: DONE :D "
+    } else if ( file.exists(paste(output_dir,"/","PSF.fits",sep = "")) ) {
+      finalPSF <- readFITS(file = paste(output_dir,"/","PSF.fits",sep = ""))$imDat
       cat("PSF provided. It will be used! :D", '\n'); log6=" PSF :: DONE :D "
     } else if ( file.exists(paste(wrk_dir, "PSF.fits",sep = "")) ) {
       finalPSF <- readFITS(file = paste(wrk_dir, "PSF.fits",sep = ""))$imDat
