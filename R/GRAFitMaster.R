@@ -579,17 +579,19 @@ print("Doing model setup")
         text(0.6, ylim, paste("ID = ", CATAID_out), adj = 0, cex = 1.3)
         text(0.6, ylim-1, paste("RA = ", format(RA_out, digits = 7) ), adj = 0, cex = 1.3)
         text(0.6, ylim-2, paste("DEC = ", format(DEC_out, digits = 5)), adj = 0, cex = 1.3)
-        text(0.6, ylim-3, paste(object_list$ZTYPE[j], " = ", format(z_out, digits = 5)), adj = 0, cex = 1.3)
+        text(0.6, ylim-3, paste("z = ", format(z_out, digits = 5)), adj = 0, cex = 1.3)
         text(0.6, ylim-4, paste("Total Mag = ", format(main_src$mag, digits = 5)), adj = 0, cex = 1.3)
-        text(0.6, ylim-5, paste("log10(Stellar Mass) = ", object_list$STELLARMASS[j]), adj = 0, cex = 1.3)
+        text(0.6, ylim-5, paste("log10(Stellar Mass) = ", 
+                                format(object_list$STELLARMASS[j], digits = 5) ), adj = 0, cex = 1.3)
         text(0.6, ylim-6, paste("B/T flux = ", format(BTflux, digits = 2)), adj = 0, cex = 1.3)
 
         # text(.89,0.2, paste("D/T flux = ", format(DTflux, digits = 2)))
         text(0.6,  ylim-7, paste("mag: ", "B = ",format(optim_mag1, digits = 4), " D = ",
                                format(optim_mag2, digits = 4)), adj = 0, cex = 1.3)
         # text(.89,-0.21, paste("D mag = ", format(optim_mag2, digits = 4)))
-        text(0.6,  ylim-8, paste("Re/asec: ", "B = ", pix_scale*as.numeric(format(optim_re1, digits = 4))), adj = 0, cex = 1.3)
+        text(0.6,  ylim-8, paste("Re/asec: ", "B = ", pix_scale*as.numeric(format(optim_re1, digits = 3))), adj = 0, cex = 1.3)
         text(0.6,  ylim-8.5, paste("                D = ", pix_scale*as.numeric(format(optim_re2, digits = 4))), adj = 0, cex = 1.3)
+        
         # text(.93, -0.61, paste("D re = ", pix_scale*as.numeric(format(optim_re2, digits = 4)), "asec"))
         text(0.6,  ylim-9, paste("n: ", "B = ", format(optim_n1, digits = 3), "     D = ",
                                format(optim_n2, digits = 3)), adj = 0, cex = 1.3)
